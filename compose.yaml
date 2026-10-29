@@ -1,0 +1,33 @@
+# DRAFT for Milestone 4 only. Do not use in Milestones 1 and 2.
+# This file starts the demo web app locally: frontend, API, worker, database.
+# The backend and frontend code do not exist yet. This file is a plan, not a working setup.
+# When Milestone 4 starts, add a Dockerfile for backend/ and frontend/, then test `docker compose up`.
+
+services:
+  # api:
+  #   build: ./backend
+  #   ports:
+  #     - "8000:8000"
+  #   env_file: .env
+  #   depends_on:
+  #     - db
+  # worker:
+  #   build: ./backend
+  #   command: python -m app.worker
+  #   env_file: .env
+  #   depends_on:
+  #     - db
+  # frontend:
+  #   build: ./frontend
+  #   ports:
+  #     - "5173:5173"
+  # db:
+  #   image: postgres:16
+  #   environment:
+  #     POSTGRES_USER: user
+  #     POSTGRES_PASSWORD: password
+  #     POSTGRES_DB: lesion_fyp
+  #   volumes:
+  #     - pgdata:/var/lib/postgresql/data
+  # volumes:
+  #   pgdata:

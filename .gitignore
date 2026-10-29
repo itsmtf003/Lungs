@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.venv/
+venv/
+*.log
+
+# Research data and outputs: never commit these
+research/data/raw/
+research/data/*.csv
+!research/data/manifest_template.csv
+research/artifacts/runs/
+research/artifacts/*.json
+research/artifacts/*.csv
+research/artifacts/*.png
+research/artifacts/*.jpg
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# Uploads and user images
+uploads/
+*.jpg
+*.png
+!research/tests/fixtures/**
+
+# Environment and secrets: never commit real values
+.env
+*.pem
+*.key
+
+# Node and build
+node_modules/
+dist/
+build/
+.next/
+
+# OS
+.DS_Store
+Thumbs.db
