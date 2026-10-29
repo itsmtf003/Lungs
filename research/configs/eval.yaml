@@ -1,0 +1,22 @@
+# Evaluation config. Test set is used once, after training is locked.
+split: test
+primary_metric: macro_f1
+metrics:
+  - accuracy
+  - macro_precision
+  - macro_recall
+  - macro_f1
+  - per_class_precision
+  - per_class_recall
+  - confusion_matrix
+  - roc_auc_ovr
+  - class_support
+report_mean_std_across_seeds: true
+seeds: [42, 123, 2026]
+# Grad-CAM IoU is Milestone 3, not Milestone 2. See explainability/README.md.
+# This eval config covers classification only.
+gradcam_iou:
+  enabled: false
+  milestone: 3
+  threshold: 0.5
+  sensitivity_thresholds: [0.3, 0.7]

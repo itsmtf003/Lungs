@@ -1,0 +1,36 @@
+# E03 Hybrid: EfficientNet-B0 + ViT-Small, proposed model
+model: hybrid_efficientnet_vit
+cnn_backbone: efficientnet_b0
+cnn_features: [1280, 7, 7]
+projection:
+  type: conv1x1
+  in_channels: 1280
+  out_channels: 384
+tokens: 49
+token_width: 384
+transformer: vit_small
+transformer_note: "Pretrained class token is kept. Pretrained 14x14 positional grid is interpolated to 7x7. See models/hybrid.py."
+refinement:
+  type: conv3x3
+  in_channels: 384
+  out_channels: 256
+  norm: true
+  activation: GELU
+head:
+  pooling: global_average
+  type: MLP
+  num_classes: 3
+input_size: 224
+train:
+  optimizer: AdamW
+  learning_rate: 0.0001
+  learning_rates_to_compare: [0.0001, 0.0003]
+  weight_decay: 0.0001
+  batch_size: 16
+  max_epochs: 50
+  early_stopping_patience: 8
+  early_stopping_monitor: val_macro_f1
+  loss: weighted_cross_entropy
+  seeds: [42, 123, 2026]
+data:
+  config: configs/data.yaml

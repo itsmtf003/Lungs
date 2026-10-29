@@ -1,0 +1,37 @@
+# Data config: ISIC 2017
+# Change the dataset only with supervisor sign-off. See DECISIONS.md D1 and D2.
+dataset: ISIC2017
+source_url: "https://challenge.isic-archive.com/data/"
+source_release: "ISIC 2017 training"
+classes:
+  - melanoma
+  - nevus
+  - seborrheic_keratosis
+num_classes: 3
+class_counts:
+  melanoma: 374
+  seborrheic_keratosis: 254
+  nevus: 1372
+total_images: 2000
+image_size: 224
+split:
+  train: 0.70
+  val: 0.15
+  test: 0.15
+  group_aware: true
+  group_columns:
+    - patient_id
+    - lesion_id
+    - group_id
+  seed: 42
+manifest_columns:
+  - image_id
+  - image_path
+  - class_label
+  - mask_path
+  - patient_id
+  - lesion_id
+  - source_release
+  - image_hash
+  - group_id
+  - split
